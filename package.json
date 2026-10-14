@@ -1,0 +1,66 @@
+{
+  "name": "library-manager",
+  "version": "1.6.1",
+  "description": "برنامج تسيير المكتبة - Electron + React + Tailwind 4 + Framer Motion + SQLite",
+  "main": "electron/main.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && electron . --dev\"",
+    "build": "vite build",
+    "start": "vite build && electron .",
+    "dist": "vite build && electron-builder",
+    "test": "node scripts/test.js",
+    "postinstall": "electron-builder install-app-deps",
+    "i18n:extract": "node scripts/i18n-extract.cjs"
+  },
+  "build": {
+    "appId": "com.library.manager",
+    "productName": "Library Manager",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json",
+      "shared/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Office"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "directories": {
+      "output": "release"
+    }
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "exceljs": "^4.4.0"
+  },
+  "devDependencies": {
+    "@babel/parser": "^8.0.7",
+    "@fontsource/amiri": "^5.2.5",
+    "@fontsource/ibm-plex-sans-arabic": "^5.2.5",
+    "@tailwindcss/vite": "^4.1.0",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.2.0",
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.0",
+    "framer-motion": "^12.23.0",
+    "jsbarcode": "^3.12.3",
+    "jsdom": "^30.1.2",
+    "lucide-react": "^0.544.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.0",
+    "vite": "^7.1.0",
+    "vitest": "^5.0.3",
+    "wait-on": "^8.0.0"
+  },
+  "author": "Library Manager"
+}
